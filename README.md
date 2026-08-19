@@ -99,13 +99,13 @@ pytest
 
 ## 🎓 课程主讲导师介绍
 
-**黄健 (Ken Huang), CISSP**
+**黄连金 (Ken Huang), CISSP**
 * 🏛️ **旧金山大学兼职教授**: [旧金山大学学者主页 ↗](https://www.usfca.edu/faculty/ken-huang)
 * 🚀 **DistributedApps.ai 创始人兼 CEO**: [DistributedApps.ai ↗](https://distributedapps.ai/)
 * ✍️ **技术专栏**: [Substack 专栏 ↗](https://kenhuangus.substack.com/)
 * 💼 **领英**: [LinkedIn 领英主页 ↗](https://www.linkedin.com/in/kenhuang8/)
 
-黄健 (Ken Huang) 是 AI 安全与智能体驾驭工程领域的知名专家与学者。担任 OWASP AIVSS (AI 验证安全标准) 项目负责人、云安全联盟 (CSA) Fellow 兼两大 AI 安全工作组联合主席、OWASP Top 10 for LLM Applications 核心成员、AIUC-1 联盟成员以及施密特科学基金会 (Schmidt Sciences) 评审委员会成员。他在 Springer、Cambridge University Press、Wiley 和 Packt 出版了 7 部关于 Agentic AI、Web3 及生成式 AI 安全的权威学术著作，其中《Harness Engineering》荣登亚马逊领域畅销榜首。
+黄连金 (Ken Huang) 是 AI 安全与智能体驾驭工程领域的知名专家与学者。担任 OWASP AIVSS (AI 验证安全标准) 项目负责人、云安全联盟 (CSA) Fellow 兼两大 AI 安全工作组联合主席、OWASP Top 10 for LLM Applications 核心成员、AIUC-1 联盟成员以及施密特科学基金会 (Schmidt Sciences) 评审委员会成员。他在 Springer、Cambridge University Press、Wiley 和 Packt 出版了 7 部关于 Agentic AI、Web3 及生成式 AI 安全的权威学术著作，其中《Harness Engineering》荣登亚马逊领域畅销榜首。
 
 ---
 

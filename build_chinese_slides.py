@@ -134,7 +134,7 @@ def generate_svg_for_slide(num: int, title: str) -> str:
   <rect x="15" y="6" width="770" height="98" rx="14" fill="#FAF9F5" stroke="#D97757" stroke-width="2.5"/>
   <circle cx="65" cy="55" r="34" fill="#F5E6DF" stroke="#BD5D3A" stroke-width="2.5"/>
   <image href="assets/images/ken-head-shot.png" x="31" y="21" width="68" height="68" clip-path="url(#headshot-circle)" preserveAspectRatio="xMidYMid slice"/>
-  <text x="115" y="44" fill="#141413" font-family="Inter, system-ui, sans-serif" font-size="16.5" font-weight="900">黄健 (KEN HUANG), CISSP — 讲师与 AI 安全学者</text>
+  <text x="115" y="44" fill="#141413" font-family="Inter, system-ui, sans-serif" font-size="16.5" font-weight="900">黄连金 (KEN HUANG), CISSP — 讲师与 AI 安全学者</text>
   <text x="115" y="68" fill="#6B6B63" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">《Harness Engineering》与《MAESTRO》作者 | 旧金山大学兼职教授</text>
   <text x="115" y="88" fill="#BD5D3A" font-family="Inter, system-ui, sans-serif" font-size="11.5" font-weight="750">CSA Fellow 兼联合主席 | OWASP AIVSS 项目负责人 | AIUC-1 联盟 | 施密特基金会</text>
 </svg>'''
