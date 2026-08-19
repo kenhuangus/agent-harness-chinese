@@ -1,0 +1,19 @@
+# GitCode Pages CI/CD Pipeline
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r docs/* public/ 2>/dev/null || true
+    - cp -r assets public/ 2>/dev/null || true
+    - cp index.html public/ 2>/dev/null || true
+    - cp slides.html public/ 2>/dev/null || true
+    - cp favicon.png public/ 2>/dev/null || true
+    - cp favicon.svg public/ 2>/dev/null || true
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
