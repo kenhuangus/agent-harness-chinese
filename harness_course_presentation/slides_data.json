@@ -711,16 +711,18 @@
     "slide_type": "reference_tables",
     "number": 47,
     "raw_lines": [
-      "附录：核心参考资料、标准规范与进阶文献库",
-      "智能体驾驭工程 (Harness Engineering) 权威官方规范与开源学习资源",
-      "| 资源分类 | 官方链接 | 核心内容说明 |",
-      "|---|---|---|",
-      "| Anthropic 官方文档 | https://code.claude.com/docs/llms.txt | Claude Code 架构、记忆体系与 31 个生命周期钩子规范 |",
-      "| 模型上下文协议 | https://modelcontextprotocol.io/ | MCP 2.x 标准规范、SDK 实现指南与生态工具 |",
-      "| OWASP AI 安全标准 | https://owasp.org/www-project-top-10-for-large-language-model-applications/ | OWASP LLM Top 10 与 AIVSS AI 验证安全框架 |",
-      "| 云安全联盟 CSA | https://cloudsecurityalliance.org/ | CSA AI 安全治理与驾驭指南与智能体安全工作组白皮书 |",
-      "| 课程中文源码仓库 | https://github.com/kenhuangus/agent-harness-chinese | 全套 10 个模块代码实现、测试套件与交互课件 |",
-      "| 作者学术出版物 | https://www.amazon.com/stores/author/B0D3J7L7GN | 7 本 AI 与安全学术著作 (Springer, Cambridge, Wiley, Packt) |"
+      "附录：核心参考资源、开源规范与进阶文献库",
+      "| 核心参考资源与规范名称 | 官方直接访问链接 |",
+      "|---|---|",
+      "| 🛡️ OWASP Agentic Skills Top 10 Risks 视频讲解 | https://www.youtube.com/watch?v=l-uwnCzRRE0 |",
+      "| 🎯 MAESTRO 智能体威胁建模框架 | https://kenhuangus.github.io/maestro-site/#1 |",
+      "| 🚀 DistributedApps.ai 咨询公司官网 | https://distributedapps.ai/ |",
+      "| 🏭 Greenfield Software Factory 开源技能库 | https://github.com/kenhuangus/greenfield-software-factory |",
+      "| ✍️ Agentic AI 智能体技术专栏 (黄连金) | https://kenhuangus.substack.com/ |",
+      "| 📖 Harness Engineering: 智能体驾驭工程亚马逊专著 | https://www.amazon.com/dp/B0HF3F86YM |",
+      "| 🐙 GitHub 中文开源主仓库 | https://github.com/kenhuangus/agent-harness-chinese |",
+      "| ⚡ Vercel 国内高速备用镜像 | https://agent-harness-chinese-ten.vercel.app/ |",
+      "| 🇨🇳 GitCode 国内镜像仓库 | https://gitcode.com/kenhuangus/agent-harness-chinese |"
     ]
   }
 ]

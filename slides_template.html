@@ -1019,6 +1019,104 @@
       color: var(--ink);
     }
 
+    
+    /* Slide 47: Dual Reference Tables & Book Publication Layout */
+    .reference-tables-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+      gap: 1.10rem;
+      height: 100%;
+      min-height: 0;
+      align-items: stretch;
+    }
+    @media (max-width: 1040px) {
+      .reference-tables-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+    }
+    .ref-table-card {
+      background: var(--surface);
+      border: 1.5px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    }
+    .ref-table-card-header {
+      background: var(--accent-sf);
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 750;
+      font-size: 0.96rem;
+      padding: 0.45rem 0.85rem;
+      border-bottom: 1.5px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--rule);
+      padding: 0.40rem 0.65rem;
+      line-height: 1.35;
+      text-align: left;
+    }
+    .ref-table th {
+      background: #FAF8F2;
+      font-weight: 750;
+      color: var(--ink);
+    }
+    .ref-table td a {
+      color: var(--accent-dk);
+      font-weight: 650;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .ref-table td a:hover {
+      color: var(--accent);
+    }
+    .book-screenshot-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--ink);
+      height: 100%;
+      justify-content: center;
+      gap: 0.60rem;
+    }
+    .book-screenshot-img {
+      max-width: 90%;
+      max-height: 270px;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      border: 1px solid var(--rule);
+      transition: transform 0.18s ease-in-out;
+    }
+    .book-screenshot-link:hover .book-screenshot-img {
+      transform: scale(1.02);
+    }
+    .book-screenshot-badge {
+      background: var(--accent);
+      color: #FFFFFF;
+      font-weight: 750;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.90rem;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(217, 119, 87, 0.25);
+      transition: background 0.16s ease;
+    }
+    .book-screenshot-link:hover .book-screenshot-badge {
+      background: var(--accent-dk);
+    }
+
     /* Grid View Mode */
     .grid-viewport {
       height: 100%;
@@ -1719,6 +1817,76 @@
                   </div>
                 </div>
 
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (slide.number === slidesData.length || (slide.raw_lines && slide.raw_lines[0] && (slide.raw_lines[0].includes('附录') || slide.raw_lines[0].includes('Additional References')))) {
+        bodyHtml += `
+          <div id="slide-content-wrap" class="reference-tables-grid">
+            <div class="ref-table-card">
+              <div class="ref-table-card-header">
+                <span>📚 核心参考资源、开源规范与推荐专著</span>
+              </div>
+              <div style="flex:1; overflow-y:auto; padding:0.40rem;">
+                <table class="ref-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 46%;">资源与标准规范名称</th>
+                      <th style="width: 54%;">官方直接访问链接</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>🛡️ OWASP Agentic Skills Top 10 Risks</strong></td>
+                      <td><a href="https://www.youtube.com/watch?v=l-uwnCzRRE0" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=l-uwnCzRRE0 ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>🎯 MAESTRO 智能体威胁建模框架</strong></td>
+                      <td><a href="https://kenhuangus.github.io/maestro-site/#1" target="_blank" rel="noopener noreferrer">https://kenhuangus.github.io/maestro-site/#1 ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>🚀 DistributedApps.ai 咨询公司官网</strong></td>
+                      <td><a href="https://distributedapps.ai/" target="_blank" rel="noopener noreferrer">https://distributedapps.ai/ ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>🏭 Greenfield Software Factory 开源技能</strong></td>
+                      <td><a href="https://github.com/kenhuangus/greenfield-software-factory" target="_blank" rel="noopener noreferrer">https://github.com/kenhuangus/greenfield-software-factory ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>✍️ Agentic AI 技术专栏 (黄连金)</strong></td>
+                      <td><a href="https://kenhuangus.substack.com/" target="_blank" rel="noopener noreferrer">https://kenhuangus.substack.com/ ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>📖 《Harness Engineering》亚马逊学术专著</strong></td>
+                      <td><a href="https://www.amazon.com/dp/B0HF3F86YM" target="_blank" rel="noopener noreferrer">https://www.amazon.com/dp/B0HF3F86YM ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>🐙 GitHub 中文开源主仓库</strong></td>
+                      <td><a href="https://github.com/kenhuangus/agent-harness-chinese" target="_blank" rel="noopener noreferrer">https://github.com/kenhuangus/agent-harness-chinese ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>⚡ Vercel 国内高速备用镜像</strong></td>
+                      <td><a href="https://agent-harness-chinese-ten.vercel.app/" target="_blank" rel="noopener noreferrer">https://agent-harness-chinese-ten.vercel.app/ ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>🇨🇳 GitCode 国内镜像仓库</strong></td>
+                      <td><a href="https://gitcode.com/kenhuangus/agent-harness-chinese" target="_blank" rel="noopener noreferrer">https://gitcode.com/kenhuangus/agent-harness-chinese ↗</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="ref-table-card">
+              <div class="ref-table-card-header">
+                <span>🏆 亚马逊畅销学术专著 (#1 Best Seller)</span>
+              </div>
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0.80rem; background:#FAF8F2;">
+                <a href="https://www.amazon.com/dp/B0HF3F86YM" target="_blank" rel="noopener noreferrer" class="book-screenshot-link" title="在亚马逊打开《Harness Engineering》专著页面">
+                  <img src="assets/images/harness_engineering_book.png" alt="Harness Engineering: Design Patterns for Securing Long-Horizon Multi-Agent AI Systems by Ken Huang" class="book-screenshot-img" />
+                  <div class="book-screenshot-badge">📖 前往亚马逊查看 Kindle &amp; 纸质版 ➔</div>
+                </a>
               </div>
             </div>
           </div>
