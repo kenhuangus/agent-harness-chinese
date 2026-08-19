@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Inter', -apple-system, sans-serif;">
+  <defs>
+    <filter id="shadowArchWhite" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Header -->
+  <rect x="0" y="0" width="1920" height="110" fill="#f8fafc" />
+  <line x1="0" y1="110" x2="1920" y2="110" stroke="#059669" stroke-width="3" />
+  
+  <text x="60" y="55" fill="#0f172a" font-size="34" font-weight="800" letter-spacing="-0.5px">⚛️ Autonomous Deep Research Agent — System Architecture</text>
+  <text x="60" y="90" fill="#475569" font-size="18" font-weight="600">10-Module Harness Stack: Spec-Driven Contracts, Model Context Protocol (MCP 2.x), Multi-Agent Worktrees, &amp; TDA Verification</text>
+  
+  <rect x="1510" y="32" width="350" height="48" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text x="1685" y="62" fill="#047857" font-size="18" font-weight="800" text-anchor="middle">5-Gate Scorecard: 100% Certified</text>
+
+  <!-- ==================== LAYER 1: UI & PRESENTATION ==================== -->
+  <g transform="translate(60, 140)" filter="url(#shadowArchWhite)">
+    <rect width="1800" height="150" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect width="1800" height="40" rx="14" fill="#f1f5f9"/>
+    <text x="30" y="27" fill="#1d4ed8" font-size="16" font-weight="800">LAYER 1: USER INTERACTION &amp; DASHBOARD (Web UI 2.0)</text>
+    
+    <!-- Component 1.1 -->
+    <rect x="30" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+    <text x="50" y="85" fill="#0f172a" font-size="17" font-weight="700">Research Controller</text>
+    <text x="50" y="112" fill="#475569" font-size="14">Objective Input, Depth Presets, 1-Click Chips</text>
+
+    <!-- Component 1.2 -->
+    <rect x="470" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+    <text x="490" y="85" fill="#0f172a" font-size="17" font-weight="700">Interactive SVG Research Graph</text>
+    <text x="490" y="112" fill="#475569" font-size="14">Live Multi-Hop Node Expansion &amp; State Links</text>
+
+    <!-- Component 1.3 -->
+    <rect x="910" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+    <text x="930" y="85" fill="#0f172a" font-size="17" font-weight="700">Citation &amp; Evidence Matrix</text>
+    <text x="930" y="112" fill="#475569" font-size="14">Confidence Badges, Primary Quotes, Domains</text>
+
+    <!-- Component 1.4 -->
+    <rect x="1350" y="55" width="420" height="75" rx="8" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+    <text x="1370" y="85" fill="#0f172a" font-size="17" font-weight="700">Dossier, Diff &amp; Scorecard Tabs</text>
+    <text x="1370" y="112" fill="#475569" font-size="14">Markdown Reader, Line Diffs, 5-Gate Audit</text>
+  </g>
+
+  <!-- ==================== LAYER 2: HARNESS GOVERNANCE & SECURITY ==================== -->
+  <g transform="translate(60, 320)" filter="url(#shadowArchWhite)">
+    <rect width="1800" height="150" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect width="1800" height="40" rx="14" fill="#f1f5f9"/>
+    <text x="30" y="27" fill="#047857" font-size="16" font-weight="800">LAYER 2: HARNESS GOVERNANCE, CONTRACTS &amp; GUARDRAILS (Modules 1, 2, 3, 4, 5)</text>
+
+    <!-- Component 2.1 -->
+    <rect x="30" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+    <text x="50" y="85" fill="#0f172a" font-size="17" font-weight="700">Memory &amp; Spec Contracts</text>
+    <text x="50" y="112" fill="#475569" font-size="14">CLAUDE.md Invariants, SPEC.md Whitelists</text>
+
+    <!-- Component 2.2 -->
+    <rect x="470" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+    <text x="490" y="85" fill="#0f172a" font-size="17" font-weight="700">PreToolUse Hooks &amp; AST Guard</text>
+    <text x="490" y="112" fill="#475569" font-size="14">Deny Dangerous CLI, Scan High-Entropy Keys</text>
+
+    <!-- Component 2.3 -->
+    <rect x="910" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+    <text x="930" y="85" fill="#0f172a" font-size="17" font-weight="700">Permission Escalation Gateway</text>
+    <text x="930" y="112" fill="#475569" font-size="14">4-Tier Matrix, HMAC Signatures in approvals.json</text>
+
+    <!-- Component 2.4 -->
+    <rect x="1350" y="55" width="420" height="75" rx="8" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+    <text x="1370" y="85" fill="#0f172a" font-size="17" font-weight="700">Token Budgeter &amp; Loop Trap</text>
+    <text x="1370" y="112" fill="#475569" font-size="14">20/20/50/10 Budgeting, SHA-256 Rolling Deque</text>
+  </g>
+
+  <!-- ==================== LAYER 3: ORCHESTRATION & COMPOUND MULTI-AGENTS ==================== -->
+  <g transform="translate(60, 500)" filter="url(#shadowArchWhite)">
+    <rect width="1800" height="150" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect width="1800" height="40" rx="14" fill="#f1f5f9"/>
+    <text x="30" y="27" fill="#b45309" font-size="16" font-weight="800">LAYER 3: COMPOUND MULTI-AGENT ORCHESTRATOR &amp; 5-STEP SOP (Modules 8 &amp; 9)</text>
+
+    <!-- Component 3.1 -->
+    <rect x="30" y="55" width="330" height="75" rx="8" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+    <text x="50" y="85" fill="#0f172a" font-size="17" font-weight="700">Planner Subagent</text>
+    <text x="50" y="112" fill="#475569" font-size="14">Multi-Hop Query Decomposition</text>
+
+    <!-- Component 3.2 -->
+    <rect x="390" y="55" width="330" height="75" rx="8" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+    <text x="410" y="85" fill="#0f172a" font-size="17" font-weight="700">Crawler Subagent</text>
+    <text x="410" y="112" fill="#475569" font-size="14">Parallel Index Harvest &amp; Ingest</text>
+
+    <!-- Component 3.3 -->
+    <rect x="750" y="55" width="330" height="75" rx="8" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+    <text x="770" y="85" fill="#0f172a" font-size="17" font-weight="700">Fact-Checker Subagent</text>
+    <text x="770" y="112" fill="#475569" font-size="14">Claim Audit &amp; Grounding Math</text>
+
+    <!-- Component 3.4 -->
+    <rect x="1110" y="55" width="330" height="75" rx="8" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+    <text x="1130" y="85" fill="#0f172a" font-size="17" font-weight="700">Synthesizer Subagent</text>
+    <text x="1130" y="112" fill="#475569" font-size="14">Academic Dossier Assembly</text>
+
+    <!-- Component 3.5 -->
+    <rect x="1470" y="55" width="300" height="75" rx="8" fill="#f8fafc" stroke="#db2777" stroke-width="2"/>
+    <text x="1490" y="85" fill="#0f172a" font-size="17" font-weight="700">Ephemeral Worktrees</text>
+    <text x="1490" y="112" fill="#475569" font-size="14">Git Isolation &amp; Clean Teardown</text>
+  </g>
+
+  <!-- ==================== LAYER 4: INTEGRATION & MODEL CONTEXT PROTOCOL (MCP 2.x) ==================== -->
+  <g transform="translate(60, 680)" filter="url(#shadowArchWhite)">
+    <rect width="1800" height="150" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect width="1800" height="40" rx="14" fill="#f1f5f9"/>
+    <text x="30" y="27" fill="#6d28d9" font-size="16" font-weight="800">LAYER 4: MODEL CONTEXT PROTOCOL (MCP 2.x) &amp; ZERO-API PUBLIC SEARCH (Module 7)</text>
+
+    <!-- Component 4.1 -->
+    <rect x="25" y="55" width="335" height="75" rx="8" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+    <text x="40" y="85" fill="#0f172a" font-size="16" font-weight="700">MCP Research Server</text>
+    <text x="40" y="112" fill="#475569" font-size="13">JSON-RPC 2.0 Stdio IPC Process</text>
+
+    <!-- Component 4.2 -->
+    <rect x="380" y="55" width="335" height="75" rx="8" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+    <text x="395" y="85" fill="#0f172a" font-size="16" font-weight="700">arXiv &amp; OpenAlex (No API)</text>
+    <text x="395" y="112" fill="#475569" font-size="13">Peer-Reviewed Papers &amp; DOIs</text>
+
+    <!-- Component 4.3 -->
+    <rect x="735" y="55" width="335" height="75" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+    <text x="750" y="85" fill="#0f172a" font-size="16" font-weight="700">GitHub Code Search (Playwright)</text>
+    <text x="750" y="112" fill="#475569" font-size="13">Live Public Repos &amp; Architectures</text>
+
+    <!-- Component 4.4 -->
+    <rect x="1090" y="55" width="335" height="75" rx="8" fill="#f8fafc" stroke="#dc2626" stroke-width="2"/>
+    <text x="1105" y="85" fill="#0f172a" font-size="16" font-weight="700">YouTube Video Search (Playwright)</text>
+    <text x="1105" y="112" fill="#475569" font-size="13">Technical Talks &amp; Demos</text>
+
+    <!-- Component 4.5 -->
+    <rect x="1445" y="55" width="330" height="75" rx="8" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+    <text x="1460" y="85" fill="#0f172a" font-size="16" font-weight="700">HackerNews &amp; Wikipedia</text>
+    <text x="1460" y="112" fill="#475569" font-size="13">Community Discussions &amp; Wiki</text>
+  </g>
+
+  <!-- ==================== LAYER 5: VERIFICATION, TDA & AUDIT SCORECARD ==================== -->
+  <g transform="translate(60, 860)" filter="url(#shadowArchWhite)">
+    <rect width="1800" height="150" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect width="1800" height="40" rx="14" fill="#f1f5f9"/>
+    <text x="30" y="27" fill="#047857" font-size="16" font-weight="800">LAYER 5: TEST RELIABILITY, TELEMETRY &amp; PRODUCTION READINESS (Modules 6 &amp; 10)</text>
+
+    <!-- Component 5.1 -->
+    <rect x="30" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+    <text x="50" y="85" fill="#0f172a" font-size="17" font-weight="700">Pytest TDA Reliability Loop</text>
+    <text x="50" y="112" fill="#475569" font-size="14">Red-Repair-Green Cycles, Anti-Regression</text>
+
+    <!-- Component 5.2 -->
+    <rect x="470" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+    <text x="490" y="85" fill="#0f172a" font-size="17" font-weight="700">5-Gate Production Auditor</text>
+    <text x="490" y="112" fill="#475569" font-size="14">Memory, Hooks, Tests, MCP, Subagents</text>
+
+    <!-- Component 5.3 -->
+    <rect x="910" y="55" width="410" height="75" rx="8" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+    <text x="930" y="85" fill="#0f172a" font-size="17" font-weight="700">Unified Diff Engine</text>
+    <text x="930" y="112" fill="#475569" font-size="14">Line-by-Line Markdown Mutation Review</text>
+
+    <!-- Component 5.4 -->
+    <rect x="1350" y="55" width="420" height="75" rx="8" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+    <text x="1370" y="85" fill="#0f172a" font-size="17" font-weight="700">Structured Telemetry Stream</text>
+    <text x="1370" y="112" fill="#475569" font-size="14">events.jsonl &amp; telemetry.jsonl Audit Trail</text>
+  </g>
+
+  <!-- Connective Arrows & Flow Indicators -->
+  <path d="M 960 290 L 960 320" stroke="#2563eb" stroke-width="3" stroke-dasharray="6,4"/>
+  <path d="M 960 470 L 960 500" stroke="#059669" stroke-width="3" stroke-dasharray="6,4"/>
+  <path d="M 960 650 L 960 680" stroke="#d97706" stroke-width="3" stroke-dasharray="6,4"/>
+  <path d="M 960 830 L 960 860" stroke="#7c3aed" stroke-width="3" stroke-dasharray="6,4"/>
+</svg>

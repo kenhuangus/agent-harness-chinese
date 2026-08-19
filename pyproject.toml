@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "packt-harness"
+version = "1.0.0"
+description = "Production-Grade AI Agent Harness Engineering - 10-Module Interactive Workshop & CLI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Ken Huang" }
+]
+keywords = [
+    "ai-agents",
+    "agent-harness",
+    "claude-code",
+    "model-context-protocol",
+    "guardrails",
+    "spec-driven-development",
+    "compound-engineering"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "pytest>=8.0.0",
+    "mcp>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "aisuite[openai]>=0.1.0",
+    "aisuite[anthropic]>=0.1.0",
+    "httpx>=0.27.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+# Playwright is used by the capstone (deep_research_agent GitHub and YouTube
+# crawlers) and by course_implementation/dashboard/capture_dashboard.py.
+# Install with:
+#   pip install -e ".[capstone]"
+#   python -m playwright install chromium
+capstone = ["playwright>=1.40.0"]
+dashboard = ["playwright>=1.40.0"]
+anthropic = ["aisuite[anthropic]>=0.1.0"]
+
+[project.scripts]
+packt-harness = "packt_harness.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+# deep_research_agent has no __init__.py files. Keep namespaces=true so
+# setuptools installs it as a PEP 420 namespace package and
+# `import deep_research_agent` works from any cwd after `pip install -e .`.
+namespaces = true
+include = [
+    "packt_harness*",
+    "course_implementation*",
+    "deep_research_agent*",
+]
+
+# Pytest configuration lives in pytest.ini at the repo root, which already sets
+# pythonpath, testpaths, and norecursedirs. pytest.ini takes precedence over
+# [tool.pytest.ini_options], so a copy here would be silently ignored and pytest
+# would warn about it. Edit pytest.ini instead.

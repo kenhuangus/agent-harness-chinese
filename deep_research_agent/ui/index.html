@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Deep Research Agent | 10-Module Harness Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon">⚛️</span>
+      <div>
+        <h1>Deep Research Agent</h1>
+        <p class="brand-sub">Autonomous 10-Module Harness Architecture</p>
+      </div>
+    </div>
+
+    <div class="header-badges">
+      <div class="badge badge-emerald" id="badgeScorecard">
+        <span>🛡️ 5-Gate Scorecard:</span>
+        <strong>100% (5/5 Certified)</strong>
+      </div>
+      <div class="badge badge-sapphire" id="badgeRisk">
+        <span>⚖️ Risk Tier:</span>
+        <strong id="currentRiskTier">LOW (Auto-Approved)</strong>
+      </div>
+      <button class="theme-btn" id="themeToggle" title="Toggle Dark/Light Mode">🌙 Theme</button>
+    </div>
+  </header>
+
+  <!-- Main Simplified 2-Column Dashboard -->
+  <main class="dashboard-grid">
+
+    <!-- Left Column: Controller & Stepper -->
+    <aside class="sidebar-col">
+      
+      <!-- Controller Card -->
+      <div class="panel-card">
+        <div class="card-header">
+          <h2><span>🔍</span> Research Controller</h2>
+        </div>
+        <div class="card-body">
+          <form id="researchForm">
+            <div class="form-group">
+              <label for="queryInput">Research Objective / Hypothesis</label>
+              <input type="text" id="queryInput" class="input-text" placeholder="Enter any topic to research..." required value="Harness Engineering for Agentic AI Systems">
+            </div>
+
+            <div class="form-group">
+              <label for="depthSelect">Synthesis Depth & Mode</label>
+              <select id="depthSelect" class="select-input">
+                <option value="multi-source">Multi-Source Zero-API Live Crawl (arXiv, GitHub, YouTube, HN, Wiki)</option>
+                <option value="deep-audit">Deep Compliance & AST Security Audit</option>
+                <option value="quick-scan">Fast Overview (Top 3 Sources)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="timeHorizonSelect">Search Time Horizon (Recency Filter)</label>
+              <select id="timeHorizonSelect" class="select-input">
+                <option value="7">📅 Past 7 Days (Ultra Fresh / Breaking)</option>
+                <option value="30" selected>📅 Past 30 Days (Default / Last Month)</option>
+                <option value="90">📅 Past 90 Days (Past Quarter)</option>
+                <option value="180">📅 Past 180 Days (Past 6 Months)</option>
+                <option value="365">📅 Past 1 Year (Past 365 Days)</option>
+                <option value="0">🌐 All Time (Full Unbounded Archive)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Active Zero-API Public Streams</label>
+              <div class="source-tags-grid">
+                <span class="source-pill">📄 arXiv / OpenAlex</span>
+                <span class="source-pill">🐙 GitHub Repos</span>
+                <span class="source-pill">🎥 YouTube Talks</span>
+                <span class="source-pill">💬 HackerNews</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="startBtn">
+              <span>⚡</span> Execute Autonomous Research
+            </button>
+          </form>
+
+          <!-- Live Autonomous Search Progress Bar Section -->
+          <div class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-header">
+              <div class="progress-title-row">
+                <span class="progress-spinner" id="progressSpinner">⚡</span>
+                <strong class="progress-label" id="progressLabel">Initializing Research Harness...</strong>
+              </div>
+              <span class="progress-pct" id="progressPct">0%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+            </div>
+            <div class="progress-substatus" id="progressSubstatus">
+              Preparing isolated worktree and MCP crawler clients...
+            </div>
+          </div>
+
+          <div class="section-divider">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <label class="section-title">🧬 Life Science, Longevity & Modern Medicine</label>
+              <span style="font-size: 0.72rem; color: var(--accent-emerald); font-weight: 700; background: #ecfdf5; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2);">10 Presets</span>
+            </div>
+            <div class="preset-list">
+              <button type="button" class="preset-chip" onclick="setPreset('Agentic AI for De Novo Small Molecule Drug Discovery, ADMET Prediction, and Lead Optimization')">
+                <span>💊 Agentic AI De Novo Drug Discovery</span>
+                <span class="preset-tag">DRUG DISCOVERY</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Cellular Reprogramming, Partial Yamanaka Factors, and Epigenetic Rejuvenation in Longevity Medicine')">
+                <span>⏳ Cellular Reprogramming & Longevity</span>
+                <span class="preset-tag">LONGEVITY</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Autonomous Agentic Multi-Omics Analysis: Integrating Genomics, Transcriptomics, and Proteomics for Precision Medicine')">
+                <span>🧬 Agentic Multi-Omics Precision Med</span>
+                <span class="preset-tag">MULTI-OMICS</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('AlphaFold 3 and ESM3 in Biomolecular Complex Modeling and De Novo Protein Engineering')">
+                <span>🧠 AlphaFold 3 & Protein Design</span>
+                <span class="preset-tag">PROTEIN AI</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('CRISPR Prime Editing, Base Editing, and In Vivo Epigenome Editing in Monogenic Rare Diseases')">
+                <span>✂️ CRISPR Prime & Base Editing</span>
+                <span class="preset-tag">GENE EDITING</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Agentic AI Workflows for Adaptive Clinical Trial Design, Cohort Stratification, and Protocol Optimization')">
+                <span>🏥 Agentic Clinical Trial Design</span>
+                <span class="preset-tag">CLINICAL AI</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Senolytics, NAD+ Precursors, and Mitochondrial Quality Control in Human Healthspan Extension')">
+                <span>⚡ Senolytics & Healthspan Extension</span>
+                <span class="preset-tag">AGING BIOLOGY</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('mRNA Vaccine Platforms, Lipid Nanoparticle (LNP) Delivery, and Personalized Neoantigen Immunotherapy')">
+                <span>💉 mRNA & Cancer Immunotherapy</span>
+                <span class="preset-tag">IMMUNO-ONC</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Autonomous Closed-Loop Bio-Foundries and Agentic Robotics for High-Throughput Wet-Lab Synthesis')">
+                <span>🤖 Autonomous Bio-Foundry Robotics</span>
+                <span class="preset-tag">BIO-FOUNDRY</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Microbiome-Gut-Brain Axis and Multi-Target Therapeutics in Neurodegenerative Disease Prevention')">
+                <span>🧠 Microbiome & Neuro Therapeutics</span>
+                <span class="preset-tag">NEUROSCIENCE</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="section-divider">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <label class="section-title">⚡ AI Systems, Security & Cloud Architecture</label>
+              <span style="font-size: 0.72rem; color: var(--accent-sapphire); font-weight: 700; background: #eff6ff; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(37, 99, 235, 0.2);">10 Presets</span>
+            </div>
+            <div class="preset-list">
+              <!-- AI & Agentic Harness -->
+              <button type="button" class="preset-chip" onclick="setPreset('Harness Engineering for Long-Horizon AI Agents')">
+                <span>🛡️ Harness Engineering & 5 Pillars</span>
+                <span class="preset-tag">AI AGENTS</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Model Context Protocol (MCP 2.x) vs Dynamic Workflows in Claude Code')">
+                <span>🔌 MCP 2.x vs Dynamic Workflows</span>
+                <span class="preset-tag">STANDARDS</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('MAESTRO Framework: Threat Modeling for Autonomous Agentic AI')">
+                <span>🎯 MAESTRO Agent Threat Modeling</span>
+                <span class="preset-tag">SECURITY</span>
+              </button>
+              <!-- Cloud & Security -->
+              <button type="button" class="preset-chip" onclick="setPreset('Zero Trust Architecture in Kubernetes with SPIFFE/SPIRE and Istio mTLS')">
+                <span>🔐 Zero Trust in Kubernetes Clusters</span>
+                <span class="preset-tag">CLOUD SEC</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('eBPF Observability and Runtime Security Telemetry in Linux Kernel')">
+                <span>⚡ eBPF Linux Kernel Telemetry</span>
+                <span class="preset-tag">SYSTEMS</span>
+              </button>
+              <!-- Distributed Systems & Databases -->
+              <button type="button" class="preset-chip" onclick="setPreset('Raft Consensus vs Paxos in High-Throughput Distributed Key-Value Stores')">
+                <span>🌐 Raft vs Paxos Distributed Consensus</span>
+                <span class="preset-tag">DISTRIBUTED</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Vector Database Indexing: HNSW vs IVFPQ at Billion-Scale')">
+                <span>📊 Billion-Scale Vector Indexing</span>
+                <span class="preset-tag">DATABASES</span>
+              </button>
+              <!-- Quantum & Crypto -->
+              <button type="button" class="preset-chip" onclick="setPreset('Topological Quantum Error Correction and Fault-Tolerant Surface Codes')">
+                <span>⚛️ Quantum Error Correction & Qubits</span>
+                <span class="preset-tag">QUANTUM</span>
+              </button>
+              <button type="button" class="preset-chip" onclick="setPreset('Post-Quantum Cryptography: Lattice-Based ML-KEM and ML-DSA in TLS 1.3')">
+                <span>🔒 Post-Quantum Cryptography TLS</span>
+                <span class="preset-tag">CRYPTO</span>
+              </button>
+              <!-- LLM Systems -->
+              <button type="button" class="preset-chip" onclick="setPreset('Speculative Decoding, KV-Cache Compression, and FlashAttention-3 in LLM Inference')">
+                <span>🚀 Speculative Decoding & KV-Cache</span>
+                <span class="preset-tag">LLM INFRA</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="section-divider">
+            <label class="section-title">5-Step SOP Pipeline Status</label>
+            <div class="stepper" id="stepperList">
+              <div class="step-item" id="step1">
+                <div class="step-icon">1</div>
+                <div class="step-text">
+                  <strong>Spec First Formulation</strong>
+                  <small>SPEC.md Contracts & Allowed Whitelists</small>
+                </div>
+              </div>
+              <div class="step-item" id="step2">
+                <div class="step-icon">2</div>
+                <div class="step-text">
+                  <strong>Worktree Sandbox & Live Crawl</strong>
+                  <small>MCP 2.x Stdio Tools & Ephemeral Branch</small>
+                </div>
+              </div>
+              <div class="step-item" id="step3">
+                <div class="step-icon">3</div>
+                <div class="step-text">
+                  <strong>Guardrails & Secret Filtering</strong>
+                  <small>PreToolUse Hooks & AST Syntax Scan</small>
+                </div>
+              </div>
+              <div class="step-item" id="step4">
+                <div class="step-icon">4</div>
+                <div class="step-text">
+                  <strong>Pytest TDA Verification</strong>
+                  <small>Red-Repair-Green Loop & Anti-Regression</small>
+                </div>
+              </div>
+              <div class="step-item" id="step5">
+                <div class="step-icon">5</div>
+                <div class="step-text">
+                  <strong>Two-Turn Reflection & Diff</strong>
+                  <small>2-Turn Self-Review, Diff & 5-Gate Audit</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Column: Main Content Area -->
+    <section class="content-col">
+      
+      <!-- Top Card: Live Research Graph & Citations -->
+      <div class="panel-card">
+        <div class="card-header">
+          <h2><span>🗺️</span> Live Research Graph & Citation Matrix</h2>
+          <span class="badge badge-emerald" id="evidenceCountBadge">8 Sources Verified</span>
+        </div>
+        <div class="card-body">
+          <!-- Interactive SVG Research Graph -->
+          <div class="graph-container" id="graphContainer">
+            <svg id="researchGraphSvg" width="100%" height="100%" viewBox="0 0 800 180">
+              <!-- Dynamic Graph Injected by app.js -->
+            </svg>
+          </div>
+
+          <!-- Citation Cards Grid -->
+          <div class="citations-grid" id="citationsGrid">
+            <!-- Dynamic Citation Cards Injected by app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Card: Synthesized Dossier & Tabs -->
+      <div class="panel-card">
+        <div class="card-header">
+          <h2><span>📑</span> Capstone Research Dossier</h2>
+          <div class="tabs-nav">
+            <button class="tab-btn active" id="tabDossier" onclick="switchTab('dossier')">📄 Research Dossier</button>
+            <button class="tab-btn" id="tabReflection" onclick="switchTab('reflection')">🧠 2-Turn Self-Reflection</button>
+            <button class="tab-btn" id="tabDiff" onclick="switchTab('diff')">🔍 Unified Diff</button>
+            <button class="tab-btn" id="tabAudit" onclick="switchTab('audit')">🛡️ 5-Gate Scorecard</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="dossier-viewer" id="dossierContent">
+            <p style="color: var(--text-muted); font-style: italic;">
+              Click <strong>"Execute Autonomous Research"</strong> to generate a verified, evidence-grounded research dossier.
+            </p>
+          </div>
+
+          <div class="section-divider">
+            <label class="section-title">⚡ Structured Telemetry & Audit Stream (events.jsonl)</label>
+            <div class="telemetry-log" id="telemetryStream">
+              <div class="telemetry-row">
+                <span class="telemetry-time">00:00:00</span>
+                <span class="telemetry-type">SYSTEM_READY</span>
+                <span>10-Module Harness stack initialized and ready.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Live Research Progress & Source Inspector Modal Dialog -->
+  <div class="modal-overlay" id="researchProgressModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-spinner" id="modalSpinner">⚡</span>
+          <div>
+            <h3 id="modalTitle">Autonomous Research in Progress</h3>
+            <p id="modalQuerySubtitle" class="modal-subtitle">Query: "..."</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="modalMinimizeBtn" onclick="closeProgressModal()" title="Minimize / View Dashboard">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Main Progress Bar -->
+        <div class="modal-progress-container">
+          <div class="modal-progress-top">
+            <span class="modal-step-badge" id="modalStepBadge">STEP 1 OF 5</span>
+            <span class="modal-step-name" id="modalStepName">Formulating Specification Contracts</span>
+            <span class="modal-pct" id="modalPct">8%</span>
+          </div>
+          <div class="modal-progress-track">
+            <div class="modal-progress-fill" id="modalProgressFill" style="width: 8%;"></div>
+          </div>
+        </div>
+
+        <!-- Live Multi-Source Research Grid -->
+        <div class="sources-progress-section">
+          <h4 class="sources-section-title">📡 Active Zero-API Source Streams</h4>
+          <div class="sources-grid" id="modalSourcesGrid">
+            
+            <div class="source-status-card" id="srcCardArxiv">
+              <div class="source-card-header">
+                <span class="src-icon">📄</span>
+                <strong>arXiv &amp; OpenAlex</strong>
+                <span class="src-badge badge-pending" id="srcBadgeArxiv">Pending...</span>
+              </div>
+              <p class="src-desc" id="srcDescArxiv">Querying preprints &amp; scholarly DOIs...</p>
+              <div class="src-hits" id="srcHitsArxiv">0 papers found</div>
+            </div>
+
+            <div class="source-status-card" id="srcCardGithub">
+              <div class="source-card-header">
+                <span class="src-icon">🐙</span>
+                <strong>GitHub Repositories</strong>
+                <span class="src-badge badge-pending" id="srcBadgeGithub">Pending...</span>
+              </div>
+              <p class="src-desc" id="srcDescGithub">Stealth agent crawling codebase repositories...</p>
+              <div class="src-hits" id="srcHitsGithub">0 repos found</div>
+            </div>
+
+            <div class="source-status-card" id="srcCardYoutube">
+              <div class="source-card-header">
+                <span class="src-icon">🎥</span>
+                <strong>YouTube Tech Talks</strong>
+                <span class="src-badge badge-pending" id="srcBadgeYoutube">Pending...</span>
+              </div>
+              <p class="src-desc" id="srcDescYoutube">Scraping conference keynotes, views &amp; metadata...</p>
+              <div class="src-hits" id="srcHitsYoutube">0 videos found</div>
+            </div>
+
+            <div class="source-status-card" id="srcCardHn">
+              <div class="source-card-header">
+                <span class="src-icon">💬</span>
+                <strong>HackerNews Community</strong>
+                <span class="src-badge badge-pending" id="srcBadgeHn">Pending...</span>
+              </div>
+              <p class="src-desc" id="srcDescHn">Querying developer discussions &amp; upvotes...</p>
+              <div class="src-hits" id="srcHitsHn">0 threads found</div>
+            </div>
+
+            <div class="source-status-card" id="srcCardWiki">
+              <div class="source-card-header">
+                <span class="src-icon">🌐</span>
+                <strong>Wikipedia Encyclopedia</strong>
+                <span class="src-badge badge-pending" id="srcBadgeWiki">Pending...</span>
+              </div>
+              <p class="src-desc" id="srcDescWiki">Extracting core principles &amp; definitions...</p>
+              <div class="src-hits" id="srcHitsWiki">0 articles found</div>
+            </div>
+
+            <div class="source-status-card" id="srcCardGuardrails">
+              <div class="source-card-header">
+                <span class="src-icon">🛡️</span>
+                <strong>Harness &amp; Guardrails</strong>
+                <span class="src-badge badge-pending" id="srcBadgeGuardrails">Pending...</span>
+              </div>
+              <p class="src-desc" id="srcDescGuardrails">AST syntax parse &amp; secret filter verification...</p>
+              <div class="src-hits" id="srcHitsGuardrails">5/5 gates ready</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Live Stream of Discovered Evidence Items -->
+        <div class="live-evidence-section">
+          <h4 class="sources-section-title">🔍 Live Discovered Evidence Feed</h4>
+          <div class="live-evidence-list" id="modalLiveEvidenceList">
+            <div class="live-evidence-empty">Awaiting first evidence stream packet from MCP tools...</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-footer-status" id="modalFooterStatus">
+          <span>⚡</span> Autonomous MCP Search &amp; Crawl Engine Active
+        </div>
+        <button class="btn-primary" id="modalViewDossierBtn" onclick="closeProgressModal()" style="display: none; width: auto; padding: 0.6rem 1.4rem;">
+          <span>📊</span> View Final Synthesized Dossier
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude 智能体 Harness 治理工程实战大师课 | Agent Harness Engineering</title>
+  <meta name="description" content="AI 编码智能体 Harness 治理工程实战大师课 —— 深入掌握确定性控制、AST 防护栏、Model Context Protocol (MCP 2.x)、规范驱动开发 (SDD) 与复合多智能体协同架构。">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <style>
+    :root {
+      --background: #F0EEE6;
+      --surface: #FAF9F5;
+      --surface-card: #FFFFFF;
+      --text-primary: #141413;
+      --text-secondary: #6B6B63;
+      --rule: #E3E0D6;
+      --accent: #D97757;
+      --accent-hover: #BD5D3A;
+      --accent-fill: #F5E6DF;
+      --code-bg: #24231F;
+      --code-text: #FAF9F5;
+      --font-display: ui-serif, Georgia, "Songti SC", "SimSun", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-code: ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+    code, pre, .terminal-box {
+      font-family: var(--font-code);
+    }
+    code {
+      background: var(--accent-fill);
+      color: var(--accent-hover);
+      border-radius: 4px;
+      padding: 0.08em 0.35em;
+      font-size: 0.90em;
+      border: 1px solid var(--rule);
+    }
+    a { color: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(240, 238, 230, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 70px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-logo-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1.5px solid var(--accent);
+    }
+    .brand-text {
+      font-family: var(--font-display);
+      font-weight: 750;
+      font-size: 1.12rem;
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.35rem;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .btn-nav-slides {
+      background: var(--accent);
+      color: #FFFFFF !important;
+      padding: 0.45rem 1.05rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-nav-slides:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4.5rem 0 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--accent-fill);
+      border: 1px solid var(--accent);
+      color: var(--accent-hover);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 750;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+      line-height: 1.18;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+    .hero-subtitle {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary-hero {
+      background: var(--accent);
+      color: #FFFFFF;
+      padding: 0.80rem 1.65rem;
+      border-radius: 8px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(217, 119, 87, 0.25);
+      transition: all 0.16s ease-in-out;
+    }
+    .btn-primary-hero:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 87, 0.35);
+    }
+    .btn-secondary-hero {
+      background: var(--surface);
+      color: var(--text-primary);
+      border: 1.5px solid var(--rule);
+      padding: 0.80rem 1.45rem;
+      border-radius: 8px;
+      font-size: 1.02rem;
+      font-weight: 650;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.16s;
+    }
+    .btn-secondary-hero:hover {
+      background: var(--accent-fill);
+      border-color: var(--accent);
+      color: var(--accent-hover);
+    }
+
+    /* Terminal Setup Box */
+    .terminal-window {
+      background: var(--code-bg);
+      border-radius: 12px;
+      border: 1px solid #383733;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    }
+    .terminal-header {
+      background: #1C1B18;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #33322E;
+    }
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .terminal-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .terminal-title {
+      font-family: var(--font-code);
+      font-size: 0.78rem;
+      color: #A0A09A;
+      font-weight: 600;
+    }
+    .terminal-body {
+      padding: 1.25rem 1.45rem;
+      color: #ECEBE4;
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+    .term-comment { color: #8B949E; }
+    .term-cmd { color: #7EE787; font-weight: 700; }
+    .term-out { color: #A5D6FF; }
+
+    /* Core Thesis & Pillars */
+    .section {
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3.5rem auto;
+    }
+    .section-badge {
+      display: inline-block;
+      background: var(--accent-fill);
+      color: var(--accent-hover);
+      font-size: 0.80rem;
+      font-weight: 800;
+      padding: 0.20rem 0.65rem;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      margin-bottom: 0.85rem;
+      color: var(--text-primary);
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .pillar-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      transition: all 0.2s ease-in-out;
+      border-top: 4px solid var(--accent);
+    }
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      border-color: var(--accent);
+    }
+    .pillar-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 750;
+      margin-bottom: 0.65rem;
+      color: var(--text-primary);
+    }
+    .pillar-desc {
+      font-size: 0.90rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Modules Curriculum Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.5rem 1.65rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.18s;
+    }
+    .module-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(217, 119, 87, 0.10);
+    }
+    .module-num {
+      color: var(--accent-hover);
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+    }
+    .module-title {
+      font-family: var(--font-display);
+      font-size: 1.20rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.65rem;
+      line-height: 1.3;
+    }
+    .module-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.15rem;
+      flex: 1;
+    }
+    .module-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--accent-hover);
+      text-decoration: none;
+      font-weight: 750;
+      font-size: 0.86rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.75rem;
+      transition: gap 0.15s;
+    }
+    .module-link:hover {
+      gap: 0.55rem;
+    }
+
+    /* Instructor Showcase */
+    .instructor-box {
+      background: var(--surface);
+      border: 1.5px solid var(--rule);
+      border-radius: 16px;
+      padding: 2.5rem 2.8rem;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .instructor-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3.5px solid var(--accent);
+      padding: 4px;
+      background: var(--accent-fill);
+      box-shadow: 0 6px 18px rgba(217, 119, 87, 0.20);
+    }
+    .instructor-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+    }
+    .instructor-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.40rem;
+      margin: 0.85rem 0 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    .instructor-cred-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+    }
+    .instructor-cred-link {
+      color: var(--accent-hover);
+      text-decoration: underline;
+      font-weight: 750;
+    }
+    .instructor-bio {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Books Gallery */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1.35rem;
+    }
+    .book-card {
+      background: var(--surface-card);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.18s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .book-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 20px rgba(217, 119, 87, 0.16);
+    }
+    .book-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 0.55rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .book-title {
+      font-size: 0.82rem;
+      font-weight: 750;
+      text-align: center;
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+    }
+    .book-pub {
+      font-size: 0.70rem;
+      color: var(--accent-hover);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--rule);
+      padding: 3rem 0;
+      color: var(--text-secondary);
+      font-size: 0.90rem;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .instructor-box { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="assets/images/harness_app_icon.png" alt="Harness 治理工程徽标" class="brand-logo-img" />
+        <span class="brand-text">Claude 智能体 Harness 治理工程</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#thesis">核心论点</a></li>
+        <li><a href="#pillars">五大支柱</a></li>
+        <li><a href="#syllabus">模块实战</a></li>
+        <li><a href="#capstone">毕业设计</a></li>
+        <li><a href="#instructor">主讲讲师</a></li>
+        <li><a href="#books">出版著作</a></li>
+        <li><a href="slides.html" class="btn-nav-slides">🖥️ 打开 47 页全景课件 ➔</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">🛡️ Anthropic Claude Code · MCP 协议 · AI 智能体治理工程</div>
+        <h1>Claude 智能体 Harness 治理工程实战大师课</h1>
+        <p class="hero-subtitle">
+          为非确定性大模型构建确定性控制系统 —— 深入掌握规范驱动开发 (SPEC.md)、AST 语法与秘钥防护、TDA 自愈测试闭环、Model Context Protocol (MCP 2.x) 及多智能体协同架构。
+        </p>
+        <div class="hero-actions">
+          <a href="slides.html" class="btn-primary-hero">🖥️ 进入 47 页交互式全景课件 ➔</a>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese" target="_blank" rel="noopener noreferrer" class="btn-secondary-hero">
+            ⭐ GitHub 中文源码仓库 ↗
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot dot-red" style="background:#FF5F56;"></div>
+              <div class="terminal-dot dot-yellow" style="background:#FFBD2E;"></div>
+              <div class="terminal-dot dot-green" style="background:#27C93F;"></div>
+            </div>
+            <div class="terminal-title">quick-start.sh — 标准化实战环境</div>
+          </div>
+          <div class="terminal-body">
+            <div class="term-comment"># 1. 克隆代码仓库 (依赖 .git 目录以支持 Worktree 隔离)</div>
+            <div class="term-cmd">$ git clone https://github.com/kenhuangus/agent-harness-chinese.git</div>
+            <div class="term-cmd">$ cd agent-harness-chinese</div>
+            <div style="height:0.45rem;"></div>
+            <div class="term-comment"># 2. 创建专属隔离 Python 虚拟环境</div>
+            <div class="term-cmd">$ python -m venv .venv</div>
+            <div class="term-cmd">$ .venv\Scripts\python.exe -m pip install -e .</div>
+            <div style="height:0.45rem;"></div>
+            <div class="term-comment"># 3. 运行全套 10 个模块自动化测试套件</div>
+            <div class="term-cmd">$ python run_all_modules.py</div>
+            <div class="term-out">================ 14 passed, 0 failed in 1.42s ================</div>
+            <div class="term-out">✅ 100% PRODUCTION READY: ALL 10 MODULES PASSING</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Thesis Section -->
+  <section id="thesis" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">CORE THESIS</span>
+        <h2 class="section-title">大师课核心论点：传统软件工程 vs. 智能体治理工程</h2>
+        <p class="section-desc">
+          从确定性逻辑编码走向非确定性智能体控制 —— 为什么外部 Harness 框架才是最终的系统控制中枢？
+        </p>
+      </div>
+      <div class="pillars-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="pillar-card" style="border-top-color: #6B6B63;">
+          <div class="pillar-icon">🏛️</div>
+          <h3 class="pillar-title">传统软件工程 (Traditional SE)</h3>
+          <p class="pillar-desc">
+            为确定性 IT 系统设计。通过 SDLC、Agile、DevOps、CI/CD、架构模式、测试金字塔与 SRE 体系，对明确编写的代码逻辑进行严格管控。核心特征是：<strong>相同输入必然产生确定、可重复的输出</strong>。
+          </p>
+        </div>
+        <div class="pillar-card" style="border-top-color: var(--accent);">
+          <div class="pillar-icon">🛡️</div>
+          <h3 class="pillar-title">智能体治理工程 (Harness Engineering)</h3>
+          <p class="pillar-desc">
+            为非确定性 Agentic AI 系统创立的全新工程学科。运行时行为是由底层模型、Prompt 上下文、记忆持久化、工具调用与多智能体编排共同概率性涌现的。核心使命是：<strong>在概率模型周围构建确定性控制环境，使智能体系统具备生产级可靠性、可观测性与安全性</strong>。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Core Pillars Section -->
+  <section id="pillars" class="section" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">THE 5 PILLARS</span>
+        <h2 class="section-title">核心 Harness 架构五大支柱</h2>
+        <p class="section-desc">
+          生产级 AI 编码智能体的工业级底层脚手架，构建无法突破的刚性控制边界。
+        </p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">🧠</div>
+          <h3 class="pillar-title">1. 分层记忆系统</h3>
+          <p class="pillar-desc">
+            CLAUDE.md / AGENTS.md 规范文件结合 Auto Memory (MEMORY.md)，实现多级作用域继承与上下文压缩持久化。
+          </p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🔒</div>
+          <h3 class="pillar-title">2. 受限工具沙箱</h3>
+          <p class="pillar-desc">
+            最小特权工具白名单结合 <code>Path.is_relative_to()</code> 路径穿越防御，将写入严格锁定在工作区内。
+          </p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🪝</div>
+          <h3 class="pillar-title">3. 确定性钩子</h3>
+          <p class="pillar-desc">
+            Claude Code 31 个生命周期事件，通过 PreToolUse 拦截危险命令，PostToolUse 执行 AST 语法与秘钥扫描。
+          </p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">📊</div>
+          <h3 class="pillar-title">4. Token 预算管理</h3>
+          <p class="pillar-desc">
+            20/20/50/10 黄金预算分配策略与首尾保留压缩 (Head/Tail Compaction)，从根源防御上下文溢出与目标漂移。
+          </p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">📜</div>
+          <h3 class="pillar-title">5. 结构化审计追踪</h3>
+          <p class="pillar-desc">
+            不可变追加式 <code>events.jsonl</code> 与 <code>telemetry.jsonl</code> 日志标准，提供全流程毫秒级可追溯审计。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 Modules Syllabus -->
+  <section id="syllabus" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">SYLLABUS & LABS</span>
+        <h2 class="section-title">全套 10 个实战模块课程大纲</h2>
+        <p class="section-desc">
+          每个模块均配备标准架构解析、端到端 Python 代码实现与自动化 Pytest 校验套件。
+        </p>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 01</div>
+            <h3 class="module-title">为什么需要 Harness 治理工程</h3>
+            <p class="module-desc">概率性模型 vs. 确定性控制系统；智能体四大经典失效模式；前置拦截与无限循环重试检测器。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_01_why_harness_engineering" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 1 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 02</div>
+            <h3 class="module-title">核心 Harness 架构五大支柱</h3>
+            <p class="module-desc">分层记忆系统、受限工具白名单、Path 路径沙箱、20/20/50/10 Token 预算与 JSONL 审计追踪。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_02_core_harness_stack" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 2 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 03</div>
+            <h3 class="module-title">规范驱动开发 (Spec-Driven Development)</h3>
+            <p class="module-desc">机器可验证 SPEC.md 契约；严格 allowed_files 范围白名单；非目标关键词过滤与 AST 语法预检。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_03_spec_driven_development" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 3 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 04</div>
+            <h3 class="module-title">确定性防护栏与生命周期拦截钩子</h3>
+            <p class="module-desc">四层纵深防御体系；Claude Code 31 个生命周期事件；PreToolUse 越权拦截与多厂商 API 秘钥扫描。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_04_guardrails_and_hooks" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 4 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 05</div>
+            <h3 class="module-title">权限提权网关与分级审批矩阵</h3>
+            <p class="module-desc">LOW/MEDIUM/HIGH/CRITICAL 风险分级；approvals.json 人工签发凭证校验与待办补丁审计。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_05_break_and_qna" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 5 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 06</div>
+            <h3 class="module-title">测试作为智能体的确定性可靠性层</h3>
+            <p class="module-desc">测试作为唯一真理来源；TDA 隔离子进程自愈修复循环；自动追加防回归测试用例与评估治理。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_06_tests_as_reliability" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 6 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 07</div>
+            <h3 class="module-title">智能体扩展机制：Skills、Plugins 与 MCP 协议</h3>
+            <p class="module-desc">Agent Skills 规范、Plugin 清单与 Model Context Protocol (MCP 2.x)；Tools / Resources / Prompts 实战。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_07_agent_extensions_mcp" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 7 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 08</div>
+            <h3 class="module-title">复合工程与多智能体协同架构</h3>
+            <p class="module-desc">规划者 Planner、执行者 Implementer 与审查者 Reviewer；临时 Git Worktree 物理隔离与 Telemetry 追踪。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_08_compound_engineering" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 8 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 09</div>
+            <h3 class="module-title">五步端到端生产 SOP 流程</h3>
+            <p class="module-desc">Spec First ➔ Sandbox ➔ Guardrails ➔ Pytest ➔ Unified Diff Review 端到端标准化交付流水线。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_09_practical_workflow_pattern" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 9 源码与 Lab ➔</a>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <div class="module-num">MODULE 10</div>
+            <h3 class="module-title">四大治理原则与五道生产就绪准入审查</h3>
+            <p class="module-desc">外部约束高于模型自觉；5-Gate 生产就绪度自动化审计器 (Memory, Hooks, Tests, MCP, Subagents)。</p>
+          </div>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/course_implementation/module_10_production_harness_principles" target="_blank" rel="noopener noreferrer" class="module-link">查看模块 10 源码与 Lab ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capstone Project Section -->
+  <section id="capstone" class="section" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">CAPSTONE PROJECT</span>
+        <h2 class="section-title">毕业设计项目：自主深度研究智能体 (Deep Research Agent)</h2>
+        <p class="section-desc">
+          将 Harness 五大支柱与五步 SOP 深度应用于长周期自主研报智能体，确保文献检索与学术报告的 100% 确定性。
+        </p>
+      </div>
+      <div style="background:var(--surface-card); border:1.5px solid var(--accent); border-radius:14px; padding:2rem; box-shadow:0 4px 16px rgba(217,119,87,0.10);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+          <h3 style="font-family:var(--font-display); font-size:1.45rem; color:var(--text-primary);">5 阶段确定性深度研究 SOP 治理流水线</h3>
+          <a href="https://github.com/kenhuangus/agent-harness-chinese/tree/main/deep_research_agent" target="_blank" rel="noopener noreferrer" class="btn-nav-slides" style="padding:0.45rem 1rem;">查看毕业设计源码 ↗</a>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.6; margin-bottom:1.5rem;">
+          包含严密的学术规范契约 (SPEC.md)、临时抓取沙箱隔离 (research_worktree/)、前置不可信域名与广告过滤钩子、自动化字数与链接完整性测试以及包含 Token 消耗与来源引用的最终研报输出。
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
+          <div style="background:var(--accent-fill); padding:0.85rem; border-radius:8px; border:1px solid var(--accent);">
+            <div style="font-weight:800; font-size:0.82rem; color:var(--accent-hover);">阶段 1: 研报契约</div>
+            <div style="font-size:0.78rem; color:var(--text-primary); margin-top:0.2rem;">SPEC.md 结构约束，严禁虚构引用</div>
+          </div>
+          <div style="background:var(--accent-fill); padding:0.85rem; border-radius:8px; border:1px solid var(--accent);">
+            <div style="font-weight:800; font-size:0.82rem; color:var(--accent-hover);">阶段 2: 抓取沙箱</div>
+            <div style="font-size:0.78rem; color:var(--text-primary); margin-top:0.2rem;">独立沙箱隔离文献与检索缓存</div>
+          </div>
+          <div style="background:var(--accent-fill); padding:0.85rem; border-radius:8px; border:1px solid var(--accent);">
+            <div style="font-weight:800; font-size:0.82rem; color:var(--accent-hover);">阶段 3: 来源过滤</div>
+            <div style="font-size:0.78rem; color:var(--text-primary); margin-top:0.2rem;">PreToolUse 过滤低质内容与广告</div>
+          </div>
+          <div style="background:var(--accent-fill); padding:0.85rem; border-radius:8px; border:1px solid var(--accent);">
+            <div style="font-weight:800; font-size:0.82rem; color:var(--accent-hover);">阶段 4: 自动化评测</div>
+            <div style="font-size:0.78rem; color:var(--text-primary); margin-top:0.2rem;">Pytest 格式与链接完整性断言</div>
+          </div>
+          <div style="background:var(--accent-fill); padding:0.85rem; border-radius:8px; border:1px solid var(--accent);">
+            <div style="font-weight:800; font-size:0.82rem; color:var(--accent-hover);">阶段 5: 交付归档</div>
+            <div style="font-size:0.78rem; color:var(--text-primary); margin-top:0.2rem;">FINAL_REPORT.md 与审计日志</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor Showcase -->
+  <section id="instructor" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">COURSE INSTRUCTOR</span>
+        <h2 class="section-title">课程主讲导师介绍</h2>
+      </div>
+      <div class="instructor-box">
+        <img src="assets/images/ken-head-shot.png" alt="黄健 (Ken Huang)" class="instructor-avatar" />
+        <div>
+          <h3 class="instructor-title">黄健 (Ken Huang), CISSP</h3>
+          <div class="instructor-credentials">
+            <div class="instructor-cred-item">
+              <span>🏛️</span>
+              <span>旧金山大学兼职教授: <a href="https://www.usfca.edu/faculty/ken-huang" target="_blank" rel="noopener noreferrer" class="instructor-cred-link">旧金山大学学者主页 ↗</a></span>
+            </div>
+            <div class="instructor-cred-item">
+              <span>🚀</span>
+              <span>DistributedApps.ai 创始人兼 CEO: <a href="https://distributedapps.ai/" target="_blank" rel="noopener noreferrer" class="instructor-cred-link">DistributedApps.ai ↗</a></span>
+            </div>
+            <div class="instructor-cred-item">
+              <span>✍️</span>
+              <span>技术专栏: <a href="https://kenhuangus.substack.com/" target="_blank" rel="noopener noreferrer" class="instructor-cred-link">Substack 专栏 ↗</a> | 💼 职业档案: <a href="https://www.linkedin.com/in/kenhuang8/" target="_blank" rel="noopener noreferrer" class="instructor-cred-link">LinkedIn 领英 ↗</a></span>
+            </div>
+          </div>
+          <p class="instructor-bio">
+            黄健 (Ken Huang) 是 AI 安全与智能体工程领域的资深专家与知名学者。担任 OWASP AIVSS (AI 验证安全标准) 项目负责人、云安全联盟 (CSA) Fellow 兼两大 AI 安全工作组联合主席、OWASP Top 10 for LLM Applications 核心成员、AIUC-1 联盟成员以及施密特科学基金会 (Schmidt Sciences) 评审委员会成员。他在 Springer、Cambridge University Press、Wiley 和 Packt 出版了 7 部关于 Agentic AI、Web3 及生成式 AI 安全的权威学术著作，其中《Harness Engineering》荣登亚马逊领域畅销榜首。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Books Gallery -->
+  <section id="books" class="section" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">PUBLICATIONS</span>
+        <h2 class="section-title">导师学术专著与前沿出版物</h2>
+        <p class="section-desc">
+          Springer · Cambridge University Press · Wiley · Packt Publishing 权威出版
+        </p>
+      </div>
+      <div class="books-grid">
+        <a href="https://www.amazon.com/dp/3031900251" target="_blank" rel="noopener noreferrer" class="book-card" title="Agentic AI: Theories and Practices (Springer)">
+          <img src="assets/images/books/springer_agentic_ai.jpg" alt="Agentic AI" class="book-img" />
+          <div class="book-title">Agentic AI</div>
+          <div class="book-pub">SPRINGER</div>
+        </a>
+        <a href="https://www.amazon.com/dp/3031448839" target="_blank" rel="noopener noreferrer" class="book-card" title="Beyond AI (Springer)">
+          <img src="assets/images/books/springer_beyond_ai.jpg" alt="Beyond AI" class="book-img" />
+          <div class="book-title">Beyond AI</div>
+          <div class="book-pub">SPRINGER</div>
+        </a>
+        <a href="https://www.amazon.com/dp/3031542517" target="_blank" rel="noopener noreferrer" class="book-card" title="Generative AI Security (Springer)">
+          <img src="assets/images/books/springer_generative_ai_security.jpg" alt="GenAI Security" class="book-img" />
+          <div class="book-title">GenAI Security</div>
+          <div class="book-pub">SPRINGER</div>
+        </a>
+        <a href="https://www.amazon.com/dp/3031901002" target="_blank" rel="noopener noreferrer" class="book-card" title="Securing AI Agents (Springer)">
+          <img src="assets/images/books/springer_securing_ai_agents.jpg" alt="Securing AI Agents" class="book-img" />
+          <div class="book-title">Securing Agents</div>
+          <div class="book-pub">SPRINGER</div>
+        </a>
+        <a href="https://www.amazon.com/dp/1009384467" target="_blank" rel="noopener noreferrer" class="book-card" title="Web3 (Cambridge University Press)">
+          <img src="assets/images/books/cambridge_web3.jpg" alt="Web3" class="book-img" />
+          <div class="book-title">Web3 &amp; Economy</div>
+          <div class="book-pub">CAMBRIDGE</div>
+        </a>
+        <a href="https://www.amazon.com/dp/1394186524" target="_blank" rel="noopener noreferrer" class="book-card" title="Blockchain and Web3 (Wiley)">
+          <img src="assets/images/books/wiley_blockchain_web3.jpg" alt="Blockchain Web3" class="book-img" />
+          <div class="book-title">Blockchain Web3</div>
+          <div class="book-pub">WILEY</div>
+        </a>
+        <a href="https://www.amazon.com/dp/B0HF3F86YM" target="_blank" rel="noopener noreferrer" class="book-card" title="Harness Engineering (Packt)">
+          <img src="assets/images/books/harness_engineering.jpg" alt="Harness Engineering" class="book-img" />
+          <div class="book-title">Harness Engineering</div>
+          <div class="book-pub">PACKT</div>
+        </a>
+        <a href="https://www.amazon.com/stores/author/B0D3J7L7GN" target="_blank" rel="noopener noreferrer" class="book-card" title="更多学术专著">
+          <div style="width:100%; height:200px; background:var(--accent-fill); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; color:var(--accent-hover); margin-bottom:0.55rem;">📚</div>
+          <div class="book-title">更多学术著作</div>
+          <div class="book-pub">AMAZON PAGE ➔</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div>
+        <p style="font-weight:700; color:var(--text-primary); margin-bottom:0.25rem;">
+          Claude 智能体 Harness 治理工程实战大师课
+        </p>
+        <p style="font-size:0.84rem;">
+          © 2026 Ken Huang (黄健) · DistributedApps.ai · 遵循 MIT 开源协议
+        </p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="slides.html">🖥️ 幻灯片课件</a></li>
+        <li><a href="https://github.com/kenhuangus/agent-harness-chinese" target="_blank" rel="noopener noreferrer">⭐ GitHub 仓库</a></li>
+        <li><a href="https://www.usfca.edu/faculty/ken-huang" target="_blank" rel="noopener noreferrer">🏛️ 旧金山大学</a></li>
+        <li><a href="https://distributedapps.ai/" target="_blank" rel="noopener noreferrer">🚀 DistributedApps.ai</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
