@@ -2,7 +2,7 @@
   {
     "number": 1,
     "raw_lines": [
-      "Claude 智能体 Harness 治理工程实战大师课",
+      "Claude 智能体驾驭工程实战大师课",
       "讲师：黄健 (Ken Huang), CISSP",
       "旧金山大学兼职教授: https://www.usfca.edu/faculty/ken-huang",
       "DistributedApps.ai 创始人兼 CEO: https://distributedapps.ai/",
@@ -29,11 +29,11 @@
   {
     "number": 3,
     "raw_lines": [
-      "大师课核心论点：传统软件工程 vs. 智能体治理工程 (Harness Engineering)",
+      "大师课核心论点：传统软件工程 vs. 智能体驾驭工程 (Harness Engineering)",
       "确定性 IT 工程体系 ➔ 非确定性 Agentic AI 控制系统",
       "• 传统软件工程体系 (Traditional SE)：为确定性 IT 系统设计，通过结构化生命周期框架（SDLC、Agile、DevOps、CI/CD、架构设计模式、测试金字塔、SRE 以及安全开发流程 DevSecOps），对明确编码的逻辑进行严格管控，确保相同输入必然产生确定、可重复的输出。",
-      "• 智能体治理工程 (Harness Engineering)：专门为非确定性 Agentic AI 系统创立的全新工程学科。在智能体系统中，运行时行为是由底层大模型、动态 Prompt 上下文、记忆持久化、工具调用、自主循环、安全策略、自动化评估及多智能体编排共同概率性涌现的。",
-      "• Harness 治理框架的核心使命：在概率性大模型周围构建确定性的软件控制与安全治理环境，使非确定性智能体系统具备高可靠性 (Reliable)、可观测性 (Observable)、内生安全 (Secure)、可治理性 (Governable) 和工业级可维护性。",
+      "• 智能体驾驭工程 (Harness Engineering)：专门为非确定性 Agentic AI 系统创立的全新工程学科。在智能体系统中，运行时行为是由底层大模型、动态 Prompt 上下文、记忆持久化、工具调用、自主循环、安全策略、自动化评估及多智能体编排共同概率性涌现的。",
+      "• 智能体驾驭框架 (Harness)的核心使命：在概率性大模型周围构建确定性的软件控制与安全驾驭环境，使非确定性智能体系统具备高可靠性 (Reliable)、可观测性 (Observable)、内生安全 (Secure)、可驾驭性 (Governable) 和工业级可维护性。",
       "• 确定性控制层五大支柱：记忆体系 (CLAUDE.md / AGENTS.md) · 路径沙箱 (Path.is_relative_to()) · 拦截钩子 (PreToolUse / PostToolUse) · 测试反馈环 (Pytest TDA) · 提权网关 (approvals.json)。"
     ]
   },
@@ -43,8 +43,8 @@
       "全课程全景知识大纲 (COURSE MASTER MAP)",
       "第一部分：基础架构与确定性控制 ➔ 第二部分：生产级可靠性与团队协同",
       "• 第一部分：基础架构与确定性控制",
-      "  • 模块 1：为什么需要 Harness 治理工程 (Why Harness Engineering)",
-      "  • 模块 2：核心 Harness 架构五大支柱 (Core Harness Stack)",
+      "  • 模块 1：为什么需要智能体驾驭工程 (Why Harness Engineering)",
+      "  • 模块 2：核心驾驭架构五大支柱 (Core Harness Stack) (Core Harness Stack)",
       "  • 模块 3：规范驱动开发 (Spec-Driven Development)",
       "  • 模块 4：确定性防护栏与拦截钩子 (Guardrails & Hooks)",
       "  • 模块 5：权限提权网关与审计账本 (Permission Gateways)",
@@ -53,19 +53,19 @@
       "  • 模块 7：智能体扩展机制 (Skills, Plugins, MCP 协议)",
       "  • 模块 8：复合智能体系统与 Worktree 隔离 (Compound Engineering)",
       "  • 模块 9：五步端到端生产 SOP 流程 (Five-Step SOP Pipeline)",
-      "  • 模块 10：四大治理原则与五道生产就绪准入审计 (Principles & Audit)"
+      "  • 模块 10：四大驾驭原则与五道生产就绪准入审计 (Principles & Audit)"
     ]
   },
   {
     "number": 5,
     "raw_lines": [
-      "模块 1：为什么需要 Harness 治理工程",
+      "模块 1：为什么需要智能体驾驭工程",
       "概率性模型 vs. 确定性控制系统",
-      "• 模型能力 ≠ 生产可靠性：大模型生成速度极快，但在缺乏外部约束治理的情况下，极易陷入失忆、幻觉、目标漂移与无限重试陷阱。",
+      "• 模型能力 ≠ 生产可靠性：大模型生成速度极快，但在缺乏外部约束与安全驾驭的情况下，极易陷入失忆、幻觉、目标漂移与无限重试陷阱。",
       "• 概率性模型层 (Probabilistic Model Layer)：负责代码生成与推理提议；天生具有不确定性，无法自主保证架构一致性与边界安全。",
-      "• 确定性治理层 (Deterministic Harness Layer)：负责运行环境约束、AST 语法解析、死循环阻断、最小特权沙箱隔离与凭据泄露扫描。",
+      "• 确定性驾驭层 (Deterministic Harness Layer)：负责运行环境约束、AST 语法解析、死循环阻断、最小特权沙箱隔离与凭据泄露扫描。",
       "• 智能体四大经典失效模式：上下文衰减遗忘、重复死循环试错、破坏性终端命令调用、未经语法与测试校验的代码落盘。",
-      "• 核心治理原则：外部 Harness 治理框架才是最终的控制中枢 —— 优先追求确定性与安全信任，而非无约束的原始生成速度。"
+      "• 核心驾驭原则：外部 智能体驾驭框架 (Harness)才是最终的控制中枢 —— 优先追求确定性与安全信任，而非无约束的原始生成速度。"
     ]
   },
   {
@@ -103,14 +103,14 @@
       "File: course_implementation/module_01_why_harness_engineering/harness_vs_model_demo.py",
       "• [第 8-10 行] 前置执行拦截 (Pre-Execution Interception)：采用确定性正则表达式匹配破坏性终端命令 (如 rm -rf, sudo, chmod 777)，在子进程创建前直接抛出 PermissionError 予以阻断。",
       "• [第 15-18 行] 循环检测器 (Loop Detector)：滑动窗口追踪最近执行历史，当检测到同一失败命令连续重复达到 max_retries 时触发 RuntimeError，安全打破无限重试陷阱。",
-      "• 验证结论：未受治理的智能体会误删关键日志并无限重试；受 Harness 治理的智能体则安全拦截危险操作，确保关键日志完好无损 (log_survived=True)。"
+      "• 验证结论：未受驾驭约束的智能体会误删关键日志并无限重试；受 Harness 驾驭的智能体则安全拦截危险操作，确保关键日志完好无损 (log_survived=True)。"
     ],
     "number": 7
   },
   {
     "number": 8,
     "raw_lines": [
-      "模块 2：核心 Harness 架构五大支柱",
+      "模块 2：核心驾驭架构五大支柱 (Core Harness Stack)",
       "AI 编码智能体的工业级底层脚手架",
       "• 支柱 1：分层记忆系统 (Memory) —— 区分用户定义与模型自生成、短期工作记忆与长期持久记忆。",
       "• 支柱 2：受限工具与沙箱 (Scoped Tools) —— 最小特权工具白名单与 Path.is_relative_to() 路径穿越沙箱防御。",
@@ -232,7 +232,7 @@
     "number": 16,
     "raw_lines": [
       "作用域与非目标过滤机制 (Scope & Non-Goals)",
-      "构建无法突破的代码治理防火墙",
+      "构建无法突破的代码安全驾驭防火墙",
       "• 允许修改文件 (Allowed Files)：auth_validator.py, test_auth.py",
       "• 禁止修改文件 (Forbidden Files)：database.py, config/settings.py",
       "• 非目标拦截 (Non-Goal)：自动拒绝未经许可的 connect_db 数据库连接与 OAuth2 凭证轮换代码。",
@@ -356,7 +356,7 @@
       "• 测试即真理来源：大模型的自评存在严重幻觉与偏见；只有通过独立 pytest 子进程执行的断言才是绝对客观的真理标准。",
       "• TDA (测试驱动智能体) 修复循环：智能体编写代码 ➔ 运行 pytest ➔ 捕获失败堆栈 ➔ 提取精确 Traceback 注入上下文 ➔ 精准定向修复。",
       "• 智能体自动防回归机制 (Anti-Regression)：当修复 Bug 后，自动追加防御性测试断言，确保历史错误绝不再次重现。",
-      "• 全面测试层级：单元测试 (Unit) ➔ 确定性 Harness 契约测试 (Harness Contract) ➔ 仿真多智能体集成测试 (Simulation)。"
+      "• 全面测试层级：单元测试 (Unit) ➔ 确定性驾驭契约测试 (Harness Contract) ➔ 仿真多智能体集成测试 (Simulation)。"
     ]
   },
   {
@@ -365,7 +365,7 @@
       "智能体系统的分层测试金字塔",
       "三层分级测试保障体系",
       "• 1. 业务单元测试 (Unit Level)：验证具体业务逻辑正确性 (test_auth.py, test_calculator.py)。",
-      "• 2. Harness 契约测试 (Harness Contract Level)：验证拦截钩子、路径沙箱与 Token 预算策略是否生效。",
+      "• 2. 驾驭契约测试 (Harness Contract Level)：验证拦截钩子、路径沙箱与 Token 预算策略是否生效。",
       "• 3. 仿真与集成测试 (Simulation / Multi-Agent)：验证多智能体通信协议、任务流转与最终交付物质量。"
     ]
   },
@@ -392,7 +392,7 @@
   {
     "number": 27,
     "raw_lines": [
-      "智能体评估治理体系 (Agentic Evaluation Harness)",
+      "智能体评估驾驭体系 (Agentic Evaluation Harness)",
       "如何科学评估非确定性系统的工业级质量",
       "• 确定性断言评估：针对代码执行结果、返回数据 Schema 与 HTTP 状态码进行二进制 (Pass/Fail) 判定。",
       "• LLM-as-a-Judge 语义评测：针对文档可读性、报告详实度等主观指标，制定评分标准让独立大模型打分。",
@@ -454,7 +454,7 @@
       "从单体技能打包到企业级插件市场分发机制",
       "• 插件清单 (.claude-plugin/plugin.json)：定义插件名称、版本、入口技能、预置 MCP 服务器及关联钩子。",
       "• 市场清单 (marketplace.json)：用于企业内部私有仓库或官方社区的插件发现、版本索引与依赖解析。",
-      "• 一键安装分发：支持通过声明式配置文件快速在多团队之间分发复用标准化治理插件。"
+      "• 一键安装分发：支持通过声明式配置文件快速在多团队之间分发复用标准化驾驭插件。"
     ]
   },
   {
@@ -488,7 +488,7 @@
       "• 命令行工具 (CLI)：轻量简单，但缺乏结构化 Schema 与内生鉴权控制；适合简单脚本调用。",
       "• Agent Skill (技能)：面向 Prompt 与上下文的知识库/工作流打包；适合定义垂直业务专长。",
       "• Plugin (插件体系)：包含 Skill、Hook 与 MCP 的全功能分发载体；适合团队级标准化能力共享。",
-      "• Lifecycle Hook (钩子)：毫秒级确定性拦截与阻断；专为安全防护、语法审计与治理策略而生。"
+      "• Lifecycle Hook (钩子)：毫秒级确定性拦截与阻断；专为安全防护、语法审计与驾驭策略而生。"
     ]
   },
   {
@@ -605,7 +605,7 @@
   {
     "number": 42,
     "raw_lines": [
-      "模块 10：Harness 治理工程四大核心原则与五道生产就绪准入审查",
+      "模块 10：智能体驾驭工程四大核心原则与五道生产就绪准入审查",
       "构建高可靠智能体系统的工程哲学与 5-Gate 生产准入标准",
       "• 原则 1：外部约束高于模型自觉 (External Constraints Over Model Trust)",
       "• 原则 2：测试断言是唯一真理来源 (Tests As The Ultimate Source of Truth)",
@@ -639,7 +639,7 @@
     ],
     "code_block": "class ProductionHarnessAuditor:\n    def audit_repository_gates(self, repo_path: str) -> dict:\n        # 第 4-8 行: 自动化审计五道生产就绪准入大门 (5-Gate Ready Check)\n        gates = {\n            \"Gate 1 (Memory Files)\": self.check_memory_files(repo_path),\n            \"Gate 2 (PreToolUse Hooks)\": self.check_pre_hooks(repo_path),\n            \"Gate 3 (Pytest Runner)\": self.check_pytest_runner(repo_path),\n            \"Gate 4 (MCP Declarations)\": self.check_mcp_config(repo_path),\n            \"Gate 5 (Subagent Definitions)\": self.check_subagents(repo_path),\n        }\n\n        # 第 12-16 行: 计算得分，仅当 5 门全过时授予 PRODUCTION_READY 认证徽章\n        passed_count = sum(1 for passed in gates.values() if passed)\n        status = \"PRODUCTION_READY\" if passed_count == 5 else \"GATES_FAILED\"\n        \n        # 第 18-21 行: 生成可审计的结构化评分报告\n        return {\"status\": status, \"score\": f\"{passed_count}/5\", \"gates\": gates}",
     "raw_lines": [
-      "模块 10 代码实战：生产级 Harness 5-Gate 准入审计器",
+      "模块 10 代码实战：生产级 5-Gate 驾驭准入审计器",
       "File: course_implementation/module_10_production_harness_principles/production_harness_audit.py",
       "• [第 4-7 行] 五道准入大门检测：依次自动化审查 Memory 记忆、Hook 拦截、Pytest 测试、MCP 协议与 Subagent 定义。",
       "• [第 12-15 行] 生产就绪评分核算：计算通过门禁数量，仅当 5/5 全部通过时打上 PRODUCTION_READY 徽章。",
@@ -652,11 +652,11 @@
     "number": 44,
     "raw_lines": [
       "工作流架构对比：Graph Engineering vs. Claude Code 动态工作流",
-      "静态有向图架构 (LangGraph) 与动态自适应 Harness 架构的横向技术选型",
+      "静态有向图架构 (LangGraph) 与动态自适应驾驭架构的横向技术选型",
       "| 架构评测维度 | 静态图架构 (Graph Engineering / LangGraph) | Claude Code 动态自适应架构 (Dynamic Harness) |",
       "|---|---|---|",
       "| 控制模型 | 硬编码静态有向图 (StateGraph / DAG) | 动态上下文 + 31 个确定性生命周期 Hook |",
-      "| 执行灵活性 | 流程静态固定，难以应对非预期多变任务 | 智能体自适应推理，由 Harness 提供刚性边界 |",
+      "| 执行灵活性 | 流程静态固定，难以应对非预期多变任务 | 智能体自适应推理，由 Harness 驾驭系统提供刚性边界 |",
       "| 状态管理 | 集中式内存状态字典 (State Dict) | 分层记忆文件 (CLAUDE.md/Auto Memory) + JSONL 日志 |",
       "| 安全沙箱 | 依赖自定义 Python 节点逻辑 | 操作系统路径沙箱 + 提权审批网关 (approvals.json) |",
       "| 团队协同 | 静态条件边分支路由 (Conditional Edges) | 临时 Git Worktree 物理隔离 + 复合角色团队 |",
@@ -668,8 +668,8 @@
     "number": 45,
     "raw_lines": [
       "毕业设计项目：自主深度研究智能体 —— 架构设计、执行流程与交付标准",
-      "将 Harness 五大支柱与五步 SOP 全面应用于长周期深度研报智能体",
-      "| 研究 SOP 阶段 | 核心交付物 | 确定性 Harness 治理机制 |",
+      "将驾驭系统五大支柱与五步 SOP 全面应用于长周期深度研报智能体",
+      "| 研究 SOP 阶段 | 核心交付物 | 确定性 Harness 驾驭机制 |",
       "|---|---|---|",
       "| 1. 规范契约 | SPEC.md | 锁定研报主题、字数结构与引用数据源格式，禁止虚构引用 |",
       "| 2. 独立沙箱 | research_worktree/ | 隔离搜索抓取与文献下载缓存，防止污染工程主分支 |",
@@ -710,13 +710,13 @@
     "number": 47,
     "raw_lines": [
       "附录：核心参考资料、标准规范与进阶文献库",
-      "Harness Engineering 领域权威官方规范与开源学习资源",
+      "智能体驾驭工程 (Harness Engineering) 权威官方规范与开源学习资源",
       "| 资源分类 | 官方链接 | 核心内容说明 |",
       "|---|---|---|",
       "| Anthropic 官方文档 | https://code.claude.com/docs/llms.txt | Claude Code 架构、记忆体系与 31 个生命周期钩子规范 |",
       "| 模型上下文协议 | https://modelcontextprotocol.io/ | MCP 2.x 标准规范、SDK 实现指南与生态工具 |",
       "| OWASP AI 安全标准 | https://owasp.org/www-project-top-10-for-large-language-model-applications/ | OWASP LLM Top 10 与 AIVSS AI 验证安全框架 |",
-      "| 云安全联盟 CSA | https://cloudsecurityalliance.org/ | CSA AI 安全治理指南与智能体安全工作组白皮书 |",
+      "| 云安全联盟 CSA | https://cloudsecurityalliance.org/ | CSA AI 安全治理与驾驭指南与智能体安全工作组白皮书 |",
       "| 课程中文源码仓库 | https://github.com/kenhuangus/agent-harness-chinese | 全套 10 个模块代码实现、测试套件与交互课件 |",
       "| 作者学术出版物 | https://www.amazon.com/stores/author/B0D3J7L7GN | 7 本 AI 与安全学术著作 (Springer, Cambridge, Wiley, Packt) |"
     ]

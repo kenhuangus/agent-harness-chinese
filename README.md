@@ -1,4 +1,4 @@
-# Claude 智能体 Harness 治理工程实战大师课
+# Claude 智能体驾驭工程实战大师课
 ### Agent Harness Engineering Masterclass (Chinese Edition)
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-在线演示课件-D97757?style=for-the-badge&logo=github)](https://kenhuangus.github.io/agent-harness-chinese/slides.html)
@@ -7,8 +7,8 @@
 [![Model Context Protocol](https://img.shields.io/badge/MCP-2.x%20Standard-4A4A44?style=for-the-badge)](https://modelcontextprotocol.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-BD5D3A?style=for-the-badge)](LICENSE)
 
-> **为非确定性大模型构建确定性控制与工业级安全治理系统**  
-> 全面掌握生产级 AI 编码智能体 Harness 治理工程体系：深入 Claude Code 记忆架构、AST 语法与秘钥防护、TDA 自愈测试闭环、MCP 协议扩展及复合多智能体协同架构。
+> **为非确定性大模型构建确定性控制与工业级安全驾驭系统**  
+> 全面掌握生产级 AI 编码智能体 智能体驾驭工程体系：深入 Claude Code 记忆架构、AST 语法与秘钥防护、TDA 自愈测试闭环、MCP 协议扩展及复合多智能体协同架构。
 
 ---
 
@@ -20,9 +20,9 @@
 
 ---
 
-## 🏛️ 核心论点：传统软件工程 vs. 智能体治理工程
+## 🏛️ 核心论点：传统软件工程 vs. 智能体驾驭工程
 
-| 维度 | 传统软件工程 (Traditional SE) | 智能体治理工程 (Harness Engineering) |
+| 维度 | 传统软件工程 (Traditional SE) | 智能体驾驭工程 (Harness Engineering) |
 | :--- | :--- | :--- |
 | **底层系统性质** | **确定性系统 (Deterministic)** | **非确定性概率系统 (Non-Deterministic)** |
 | **开发管控范式** | SDLC, Agile, CI/CD, 测试金字塔, SRE | 记忆分层, 路径沙箱, AST 钩子, TDA 自愈闭环 |
@@ -31,7 +31,7 @@
 
 ---
 
-## 🛡️ 核心 Harness 架构五大支柱
+## 🛡️ 核心驾驭架构五大支柱 (Core Harness Stack)
 
 1. **🧠 分层记忆系统 (Hierarchical Memory)**: `CLAUDE.md` / `AGENTS.md` 规范结合 Auto Memory (`MEMORY.md`)，实现多级作用域继承与压缩持久化。
 2. **🔒 受限工具沙箱 (Scoped Tool Sandbox)**: 最小特权工具白名单结合 `Path.is_relative_to()` 路径穿越防御，将写入严格锁定在工作区内。
@@ -47,8 +47,8 @@
 
 | 模块编号 | 模块主题 | 核心实战代码与 Lab 链接 |
 | :--- | :--- | :--- |
-| **Module 01** | **为什么需要 Harness 治理工程** | [`course_implementation/module_01_why_harness_engineering/`](./course_implementation/module_01_why_harness_engineering/) |
-| **Module 02** | **核心 Harness 架构五大支柱** | [`course_implementation/module_02_core_harness_stack/`](./course_implementation/module_02_core_harness_stack/) |
+| **Module 01** | **为什么需要智能体驾驭工程** | [`course_implementation/module_01_why_harness_engineering/`](./course_implementation/module_01_why_harness_engineering/) |
+| **Module 02** | **核心驾驭架构五大支柱 (Core Harness Stack)** | [`course_implementation/module_02_core_harness_stack/`](./course_implementation/module_02_core_harness_stack/) |
 | **Module 03** | **规范驱动开发 (Spec-Driven Development)** | [`course_implementation/module_03_spec_driven_development/`](./course_implementation/module_03_spec_driven_development/) |
 | **Module 04** | **确定性防护栏与生命周期拦截钩子** | [`course_implementation/module_04_guardrails_and_hooks/`](./course_implementation/module_04_guardrails_and_hooks/) |
 | **Module 05** | **权限提权网关与分级审批矩阵** | [`course_implementation/module_05_break_and_qna/`](./course_implementation/module_05_break_and_qna/) |
@@ -56,13 +56,13 @@
 | **Module 07** | **智能体扩展机制：Skills、Plugins 与 MCP** | [`course_implementation/module_07_agent_extensions_mcp/`](./course_implementation/module_07_agent_extensions_mcp/) |
 | **Module 08** | **复合工程与多智能体协同架构** | [`course_implementation/module_08_compound_engineering/`](./course_implementation/module_08_compound_engineering/) |
 | **Module 09** | **五步端到端生产 SOP 流程** | [`course_implementation/module_09_practical_workflow_pattern/`](./course_implementation/module_09_practical_workflow_pattern/) |
-| **Module 10** | **四大治理原则与五道生产就绪准入审查** | [`course_implementation/module_10_production_harness_principles/`](./course_implementation/module_10_production_harness_principles/) |
+| **Module 10** | **四大驾驭原则与五道生产就绪准入审查** | [`course_implementation/module_10_production_harness_principles/`](./course_implementation/module_10_production_harness_principles/) |
 
 ---
 
 ## 🔬 毕业设计项目：自主深度研究智能体 (Deep Research Agent)
 
-毕业设计项目位于 [`deep_research_agent/`](./deep_research_agent/)，演示了如何将 Harness 五大支柱与五步 SOP 应用于长周期学术调研：
+毕业设计项目位于 [`deep_research_agent/`](./deep_research_agent/)，演示了如何将驾驭系统五大支柱与五步 SOP 应用于长周期学术调研：
 * **阶段 1 (Spec First)**: 确立 `SPEC.md` 契约，严禁虚构文献与未经证实的推断。
 * **阶段 2 (Sandbox Execution)**: 独立沙箱隔离文献与检索缓存。
 * **阶段 3 (Deterministic Guardrails)**: PreToolUse 过滤低质内容与商业广告。
@@ -105,7 +105,7 @@ pytest
 * ✍️ **技术专栏**: [Substack 专栏 ↗](https://kenhuangus.substack.com/)
 * 💼 **领英**: [LinkedIn 领英主页 ↗](https://www.linkedin.com/in/kenhuang8/)
 
-黄健 (Ken Huang) 是 AI 安全与智能体治理工程领域的知名专家与学者。担任 OWASP AIVSS (AI 验证安全标准) 项目负责人、云安全联盟 (CSA) Fellow 兼两大 AI 安全工作组联合主席、OWASP Top 10 for LLM Applications 核心成员、AIUC-1 联盟成员以及施密特科学基金会 (Schmidt Sciences) 评审委员会成员。他在 Springer、Cambridge University Press、Wiley 和 Packt 出版了 7 部关于 Agentic AI、Web3 及生成式 AI 安全的权威学术著作，其中《Harness Engineering》荣登亚马逊领域畅销榜首。
+黄健 (Ken Huang) 是 AI 安全与智能体驾驭工程领域的知名专家与学者。担任 OWASP AIVSS (AI 验证安全标准) 项目负责人、云安全联盟 (CSA) Fellow 兼两大 AI 安全工作组联合主席、OWASP Top 10 for LLM Applications 核心成员、AIUC-1 联盟成员以及施密特科学基金会 (Schmidt Sciences) 评审委员会成员。他在 Springer、Cambridge University Press、Wiley 和 Packt 出版了 7 部关于 Agentic AI、Web3 及生成式 AI 安全的权威学术著作，其中《Harness Engineering》荣登亚马逊领域畅销榜首。
 
 ---
 

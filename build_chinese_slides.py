@@ -146,7 +146,7 @@ def generate_svg_for_slide(num: int, title: str) -> str:
   <text x="202" y="78" fill="#141413" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">相同输入 ➔ 产生 100% 确定性输出</text>
   <path d="M385 54 L415 54" stroke="#D97757" stroke-width="3.5" stroke-dasharray="4 4"/>
   <rect x="415" y="8" width="365" height="92" rx="12" fill="#FAF9F5" stroke="#D97757" stroke-width="2.5"/>
-  <text x="597" y="34" fill="#141413" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">智能体治理工程 (非确定性系统)</text>
+  <text x="597" y="34" fill="#141413" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="800" text-anchor="middle">智能体驾驭工程 (非确定性系统)</text>
   <text x="597" y="56" fill="#6B6B63" font-family="Inter, system-ui, sans-serif" font-size="11.5" text-anchor="middle">记忆 · 路径沙箱 · 生命周期钩子 · TDA 测试自愈</text>
   <text x="597" y="78" fill="#BD5D3A" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="750" text-anchor="middle">概率性大模型 ➔ 确定性受控与安全运行</text>
 </svg>'''
